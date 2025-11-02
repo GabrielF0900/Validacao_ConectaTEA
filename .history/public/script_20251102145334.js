@@ -218,6 +218,7 @@ function handleSubmit(event) {
     beta: formData.get("beta"),
   };
 
+  console.log("[v0] Form submitted:", data);
   alert("Obrigado por se inscrever! Entraremos em contato em breve.");
   event.target.reset();
   updateFormVisibility(); // Reset form visibility after submit

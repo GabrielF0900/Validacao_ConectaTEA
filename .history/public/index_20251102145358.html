@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConectaTEA - Acompanhamento de Crianças com TEA</title>
+  <meta name="description" content="Plataforma completa para acompanhar o desenvolvimento e conectar famílias e profissionais no cuidado de crianças com TEA (autismo).">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo-wrapper">
+        <div class="logo-circle">C</div>
+        <span class="logo-text">ConectaTEA</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Acompanhe o progresso das crianças com TEA de forma simples e colaborativa
+        </h1>
+        <p class="hero-description">
+          Famílias e profissionais conectados em um só lugar, com ferramentas que tornam o acompanhamento mais humano e eficaz.
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="scrollToForm()">
+            Quero participar da pesquisa
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">Sobre o ConectaTEA</h2>
+        <p class="section-description">
+          Uma plataforma completa para acompanhar o desenvolvimento e conectar famílias e profissionais no cuidado de crianças com TEA (autismo).
+        </p>
+        <div class="alert-box">
+          <p>
+            <strong>Estamos validando a primeira versão do sistema</strong> — participe do início dessa transformação e ajude a moldar o futuro do acompanhamento de crianças autistas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel Section -->
+  <section class="carousel-section">
+    <div class="container">
+      <div class="carousel-wrapper">
+        <div class="carousel-header">
+          <h2 class="section-title">Veja o que estamos desenvolvendo</h2>
+        </div>
+        <div class="carousel-container">
+          <div class="carousel-image-wrapper">
+            <img id="carousel-image" src="/placeholder.svg" alt="Screenshot do sistema" class="carousel-image">
+          </div>
+          <button class="carousel-btn carousel-btn-prev" onclick="prevSlideEnhanced()">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="carousel-btn carousel-btn-next" onclick="nextSlideEnhanced()">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+          <div class="carousel-counter">
+            <span id="carousel-current">1</span> / <span id="carousel-total">10</span>
+          </div>
+        </div>
+        <p class="carousel-caption" id="carousel-caption"></p>
+        <p class="carousel-disclaimer">
+          Os layouts podem sofrer alterações, mas será pensado na melhor experiência do usuário.
+        </p>
+        <div class="carousel-dots" id="carousel-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-wrapper">
+        <div class="features-header">
+          <h2 class="section-title">Funcionalidades Principais</h2>
+          <p class="section-subtitle">Clique nas funcionalidades que mais te interessam</p>
+        </div>
+        <div class="features-grid">
+          <!-- Feature 1 -->
+          <div class="feature-card" onclick="handleFeatureClick('metas')">
+            <div class="feature-header">
+              <div class="feature-icon feature-icon-blue">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Metas Personalizadas</h3>
+            </div>
+            <p class="feature-description">
+              Defina objetivos específicos e acompanhe o progresso de cada criança de forma individualizada.
+            </p>
+            <button class="btn btn-outline">
+              Tenho interesse (<span id="click-metas">0</span>)
+            </button>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card" onclick="handleFeatureClick('comunicacao')">
+            <div class="feature-header">
+              <div class="feature-icon feature-icon-orange">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Comunicação com Profissionais</h3>
+            </div>
+            <p class="feature-description">
+              Chat direto entre responsáveis e profissionais para troca de informações e atualizações.
+            </p>
+            <button class="btn btn-outline">
+              Tenho interesse (<span id="click-comunicacao">0</span>)
+            </button>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card" onclick="handleFeatureClick('relatorios')">
+            <div class="feature-header">
+              <div class="feature-icon feature-icon-purple">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Relatórios e Progresso</h3>
+            </div>
+            <p class="feature-description">
+              Visualize o desenvolvimento através de gráficos e relatórios detalhados e intuitivos.
+            </p>
+            <button class="btn btn-outline">
+              Tenho interesse (<span id="click-relatorios">0</span>)
+            </button>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card" onclick="handleFeatureClick('ia')">
+            <div class="feature-header">
+              <div class="feature-icon feature-icon-green">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">IA Assistente</h3>
+            </div>
+            <p class="feature-description">
+              Inteligência artificial para sugestões personalizadas e análise de progresso automatizada.
+            </p>
+            <button class="btn btn-outline">
+              Tenho interesse (<span id="click-ia">0</span>)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="pricing-wrapper">
+        <div class="pricing-header">
+          <h2 class="section-title">Planos Simples e Transparentes</h2>
+          <p class="section-subtitle">Escolha o plano ideal para suas necessidades</p>
+        </div>
+        <div class="pricing-grid">
+          <!-- Plan 1 -->
+          <div class="pricing-card" onclick="handlePricingClick('essencial')">
+            <h3 class="pricing-title">Essencial</h3>
+            <div class="pricing-price">
+              <span class="price-amount">R$ 29</span>
+              <span class="price-period">/mês</span>
+            </div>
+            <ul class="pricing-features">
+              <li class="pricing-feature">
+                <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Acompanhamento básico
+              </li>
+              <li class="pricing-feature">
+                <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Chat com profissionais
+              </li>
+              <li class="pricing-feature">
+                <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Limite de Crianças
+              </li>
+            </ul>
+            <button class="btn btn-primary">
+              Tenho interesse (<span id="click-essencial">0</span>)
+            </button>
+          </div>
+
+          <!-- Plan 2 -->
+          <div class="pricing-card pricing-card-featured" onclick="handlePricingClick('profissional')">
+            <div class="pricing-badge">Mais Popular</div>
+            <h3 class="pricing-title">Profissional</h3>
+            <div class="pricing-price">
+              <span class="price-amount">R$ 49</span>
+              <span class="price-period">/mês</span>
+            </div>
+            <ul class="pricing-features">
+              <li class="pricing-feature">
+                <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Crianças ilimitadas
+              </li>
+              <li class="pricing-feature">
+                <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Análise de IA
+              </li>
+              <li class="pricing-feature">
+                <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Relatórios detalhados
+              </li>
+              <li class="pricing-feature">
+                <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Prioridade no suporte
+              </li>
+            </ul>
+            <button class="btn btn-primary">
+              Tenho interesse (<span id="click-profissional">0</span>)
+            </button>
+          </div>
+        </div>
+        <p class="pricing-disclaimer">
+          Os valores são apenas estimativas para fins de validação.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration Form -->
+  <section id="registration-form" class="form-section">
+    <div class="container">
+      <div class="form-wrapper">
+        <div class="form-header">
+          <h2 class="section-title">Participe do teste gratuito do ConectaTEA</h2>
+        </div>
+        
+        <div class="form-intro">
+          <p class="intro-text">
+            Somos a <strong>Neukox</strong>, uma organização que está desenvolvendo uma startup com o objetivo de solucionar desafios enfrentados por profissionais da área da saúde mental e por famílias de crianças com TEA, utilizando a tecnologia como aliada.
+          </p>
+          <p class="intro-text">
+            Estamos realizando um levantamento de dados para validar nossa ideia e entender o nível de interesse e necessidade do nosso público-alvo.
+            Sua participação é essencial para nos ajudar a construir uma solução realmente útil e transformadora 💙
+          </p>
+            
+            <div class="attention-box">
+              <h3>👨‍👩‍👧 Atenção:</h3>
+              <p>
+                Os <strong>responsáveis (pais e familiares)</strong> terão <strong>acesso gratuito</strong> (modelo freemium) para acompanhar o progresso das crianças e se comunicar com os profissionais.
+              </p>
+              <p>
+                Os <strong>planos pagos</strong> são destinados apenas a <strong>profissionais da área da saúde mental</strong>, que terão acesso a relatórios, dashboards e funcionalidades avançadas.
+              </p>
+            </div>
+            
+            <div class="instruction-box">
+              <p><strong>Instrução importante:</strong> Algumas perguntas se aplicam apenas a certos perfis (pais ou profissionais). Responda conforme seu caso.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Google Forms Integration -->
+        <div class="google-forms-container">
+          <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdfNOZPHbJlIFGypQlMH1UkKoBxBTPiTJc-4kJJuXX3FpjtbQ/viewform?embedded=true" 
+            width="100%" 
+            height="2385" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0"
+            title="Formulário ConectaTEA - Neukox">
+            Carregando formulário...
+          </iframe>
+        </div>
+        
+        <!-- Formulário local (mantido como backup/alternativa) -->
+        <div class="local-form-container" style="display: none;">
+        <form class="form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name" class="form-label">Nome completo *</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Seu nome completo" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">E-mail *</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">No ConectaTEA, você seria o que: *</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="role" value="pai" checked>
+                <span>Pai/Mãe</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="role" value="profissional">
+                <span>Profissional</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="age-group">
+            <label for="age" class="form-label">Idade da criança (se aplicável)</label>
+            <p class="form-description">Essa pergunta é direcionada somente aos responsáveis.</p>
+            <input type="text" id="age" name="age" class="form-input" placeholder="Ex: 5 anos">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Já usa alguma ferramenta semelhante?</label>
+            <p class="form-description">Essa pergunta é direcionada para ambos (responsáveis e profissionais)</p>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="tools" value="sim" checked>
+                <span>Sim (Google Sheets, Excel, caderno físico)</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="tools" value="nao">
+                <span>Não</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="tools" value="outro">
+                <span>Outro:</span>
+              </label>
+            </div>
+            <input type="text" id="tools-other" name="tools-other" class="form-input" placeholder="Especifique qual ferramenta" style="margin-top: 0.5rem; display: none;">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Quais recursos mais te interessam?</label>
+            <p class="form-description">Essa pergunta é direcionada para ambos (responsáveis e profissionais)</p>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="features" value="metas">
+                <span>Metas personalizadas</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="features" value="relatorios">
+                <span>Relatórios e gráficos</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="features" value="chat">
+                <span>Chat com profissionais</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="features" value="ia">
+                <span>IA assistente</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="features" value="outro">
+                <span>Outro:</span>
+              </label>
+            </div>
+            <input type="text" id="features-other" name="features-other" class="form-input" placeholder="Especifique outros recursos" style="margin-top: 0.5rem; display: none;">
+          </div>
+
+          <div class="form-group" id="pricing-group">
+            <label class="form-label">Quanto pagaria por uma plataforma assim?</label>
+            <p class="form-description">Essa pergunta é destinada somente aos profissionais.</p>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="price" value="29" checked>
+                <span>Essencial - R$ 29/mês</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="price" value="49">
+                <span>Profissional - R$ 49/mês</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Gostaria de participar do teste beta?</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="beta" value="sim" checked>
+                <span>Sim, muito interessado</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="beta" value="nao">
+                <span>Não, apenas observando</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large">
+            Quero participar do teste
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo-circle">C</div>
+          <span class="logo-text">ConectaTEA</span>
+        </div>
+        <p class="footer-description">
+          Transformando a vida das crianças autistas com amor e cuidado.
+        </p>
+        <p class="footer-copyright">
+          © 2025 ConectaTEA — Projeto em validação. Todos os direitos reservados.
+        </p>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Política de Privacidade</a>
+          <a href="mailto:contato@conectatea.com" class="footer-link">Contato</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
