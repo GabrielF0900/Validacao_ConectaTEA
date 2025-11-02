@@ -253,59 +253,47 @@ function prevSlide() {
 }
 
 // Handle feature click
-async function handleFeatureClick(feature) {
-  // Incrementa localmente para feedback imediato
+function handleFeatureClick(feature) {
   clickedFeatures[feature]++;
   document.getElementById(`click-${feature}`).textContent =
     clickedFeatures[feature];
 
-  // Save to localStorage (backup)
+  // Save to localStorage
   saveClickData();
 
-  // Send to backend
-  try {
-    const response = await fetch("/api/click", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ key: feature, type: "feature" }),
-    });
-
-    if (response.ok) {
-      // Atualiza com os dados reais do servidor após um delay
-      setTimeout(refreshClickData, 500);
-    }
-  } catch (error) {
-    console.warn("Erro ao enviar clique para o backend:", error);
-  }
+  // Send to backend (non-blocking)
+  sendClickToBackend(feature, "feature");
 }
 
 // Handle pricing click
-async function handlePricingClick(plan) {
-  // Incrementa localmente para feedback imediato
+function handlePricingClick(plan) {
   clickedPricing[plan]++;
   document.getElementById(`click-${plan}`).textContent = clickedPricing[plan];
 
-  // Save to localStorage (backup)
+  // Save to localStorage
   saveClickData();
 
-  // Send to backend
+  // Send to backend (non-blocking)
+  sendClickToBackend(plan, "pricing");
+}
+
+// Send click data to backend
+async function sendClickToBackend(key, type) {
   try {
     const response = await fetch("/api/click", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ key: plan, type: "pricing" }),
+      body: JSON.stringify({ key, type }),
     });
 
-    if (response.ok) {
-      // Atualiza com os dados reais do servidor após um delay
-      setTimeout(refreshClickData, 500);
+    if (!response.ok) {
+      console.warn("Failed to send click to backend:", response.statusText);
     }
   } catch (error) {
-    console.warn("Erro ao enviar clique para o backend:", error);
+    console.warn("Error sending click to backend:", error);
+    // Não bloqueia a UI - continua funcionando com localStorage
   }
 }
 
@@ -586,16 +574,6 @@ document.addEventListener("DOMContentLoaded", () => {
       updateOtherFieldsVisibility
     );
   }
-
-  // Initialize click data from server
-  loadClickData().then((data) => {
-    clickedFeatures = { ...clickedFeatures, ...data.features };
-    clickedPricing = { ...clickedPricing, ...data.pricing };
-    updateClickCountsUI();
-  });
-
-  // Refresh click data every 30 seconds to show real-time updates
-  setInterval(refreshClickData, 30000);
 
   // Optional: Start auto-play (uncomment to enable)
   // startAutoPlay()

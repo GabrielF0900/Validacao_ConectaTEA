@@ -264,12 +264,12 @@ async function handleFeatureClick(feature) {
 
   // Send to backend
   try {
-    const response = await fetch("/api/click", {
-      method: "POST",
+    const response = await fetch('/api/click', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ key: feature, type: "feature" }),
+      body: JSON.stringify({ key: feature, type: 'feature' })
     });
 
     if (response.ok) {
@@ -277,7 +277,7 @@ async function handleFeatureClick(feature) {
       setTimeout(refreshClickData, 500);
     }
   } catch (error) {
-    console.warn("Erro ao enviar clique para o backend:", error);
+    console.warn('Erro ao enviar clique para o backend:', error);
   }
 }
 
@@ -292,12 +292,12 @@ async function handlePricingClick(plan) {
 
   // Send to backend
   try {
-    const response = await fetch("/api/click", {
-      method: "POST",
+    const response = await fetch('/api/click', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ key: plan, type: "pricing" }),
+      body: JSON.stringify({ key: plan, type: 'pricing' })
     });
 
     if (response.ok) {
@@ -305,7 +305,7 @@ async function handlePricingClick(plan) {
       setTimeout(refreshClickData, 500);
     }
   } catch (error) {
-    console.warn("Erro ao enviar clique para o backend:", error);
+    console.warn('Erro ao enviar clique para o backend:', error);
   }
 }
 
@@ -586,16 +586,6 @@ document.addEventListener("DOMContentLoaded", () => {
       updateOtherFieldsVisibility
     );
   }
-
-  // Initialize click data from server
-  loadClickData().then((data) => {
-    clickedFeatures = { ...clickedFeatures, ...data.features };
-    clickedPricing = { ...clickedPricing, ...data.pricing };
-    updateClickCountsUI();
-  });
-
-  // Refresh click data every 30 seconds to show real-time updates
-  setInterval(refreshClickData, 30000);
 
   // Optional: Start auto-play (uncomment to enable)
   // startAutoPlay()
