@@ -589,60 +589,6 @@ body {
   margin-bottom: 3rem;
 }
 
-.form-intro {
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  text-align: left;
-}
-
-.intro-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  color: var(--color-foreground);
-}
-
-.attention-box {
-  background-color: rgba(0, 208, 132, 0.1);
-  border-left: 4px solid var(--color-primary);
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
-.attention-box h3 {
-  margin: 0 0 1rem 0;
-  color: var(--color-primary);
-  font-size: 1.125rem;
-  font-weight: 600;
-}
-
-.attention-box p {
-  margin: 0 0 1rem 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.attention-box p:last-child {
-  margin-bottom: 0;
-}
-
-.instruction-box {
-  background-color: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
-  border-radius: var(--radius);
-  text-align: center;
-}
-
-.instruction-box p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--color-blue);
-  font-weight: 500;
-}
-
 .form {
   padding: 2rem;
   border-radius: var(--radius);
@@ -974,38 +920,6 @@ body {
     padding: 1rem 2rem;
     font-size: 1.125rem;
     min-height: 50px;
-  }
-
-  /* Form intro sections mobile */
-  .form-intro {
-    max-width: 100%;
-    text-align: left;
-  }
-
-  .intro-text {
-    font-size: 0.95rem;
-  }
-
-  .attention-box {
-    padding: 1rem;
-    margin: 1rem 0;
-  }
-
-  .attention-box h3 {
-    font-size: 1rem;
-  }
-
-  .attention-box p {
-    font-size: 0.9rem;
-  }
-
-  .instruction-box {
-    padding: 0.75rem 1rem;
-    margin: 1rem 0;
-  }
-
-  .instruction-box p {
-    font-size: 0.9rem;
   }
 
   /* Alert box mobile */

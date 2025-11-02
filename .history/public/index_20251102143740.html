@@ -272,38 +272,18 @@
       <div class="form-wrapper">
         <div class="form-header">
           <h2 class="section-title">Participe do teste gratuito do ConectaTEA</h2>
-          <div class="form-intro">
-            <p class="intro-text">
-              Somos a <strong>Neukox</strong>, uma organização que está desenvolvendo uma startup com o objetivo de solucionar desafios enfrentados por profissionais da área da saúde mental e por famílias de crianças com TEA, utilizando a tecnologia como aliada.
-            </p>
-            <p class="intro-text">
-              Estamos realizando um levantamento de dados para validar nossa ideia e entender o nível de interesse e necessidade do nosso público-alvo.
-              Sua participação é essencial para nos ajudar a construir uma solução realmente útil e transformadora 💙
-            </p>
-            
-            <div class="attention-box">
-              <h3>👨‍👩‍👧 Atenção:</h3>
-              <p>
-                Os <strong>responsáveis (pais e familiares)</strong> terão <strong>acesso gratuito</strong> (modelo freemium) para acompanhar o progresso das crianças e se comunicar com os profissionais.
-              </p>
-              <p>
-                Os <strong>planos pagos</strong> são destinados apenas a <strong>profissionais da área da saúde mental</strong>, que terão acesso a relatórios, dashboards e funcionalidades avançadas.
-              </p>
-            </div>
-            
-            <div class="instruction-box">
-              <p><strong>Instrução importante:</strong> Algumas perguntas se aplicam apenas a certos perfis (pais ou profissionais). Responda conforme seu caso.</p>
-            </div>
-          </div>
+          <p class="section-description">
+            Seja um dos primeiros a testar ConectaTEA e ajude a moldar o futuro do acompanhamento de crianças autistas.
+          </p>
         </div>
         <form class="form" onsubmit="handleSubmit(event)">
           <div class="form-group">
-            <label for="name" class="form-label">Nome completo *</label>
+            <label for="name" class="form-label">Nome completo</label>
             <input type="text" id="name" name="name" class="form-input" placeholder="Seu nome completo" required>
           </div>
 
           <div class="form-group">
-            <label for="email" class="form-label">E-mail *</label>
+            <label for="email" class="form-label">E-mail</label>
             <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
           </div>
 
@@ -349,7 +329,6 @@
 
           <div class="form-group">
             <label class="form-label">Quais recursos mais te interessam?</label>
-            <p class="form-description">Essa pergunta é direcionada para ambos (responsáveis e profissionais)</p>
             <div class="checkbox-group">
               <label class="checkbox-label">
                 <input type="checkbox" name="features" value="metas">
@@ -369,23 +348,25 @@
               </label>
               <label class="checkbox-label">
                 <input type="checkbox" name="features" value="outro">
-                <span>Outro:</span>
+                <span>Outro</span>
               </label>
             </div>
-            <input type="text" id="features-other" name="features-other" class="form-input" placeholder="Especifique outros recursos" style="margin-top: 0.5rem; display: none;">
           </div>
 
-          <div class="form-group" id="pricing-group">
+          <div class="form-group">
             <label class="form-label">Quanto pagaria por uma plataforma assim?</label>
-            <p class="form-description">Essa pergunta é destinada somente aos profissionais.</p>
             <div class="radio-group">
               <label class="radio-label">
                 <input type="radio" name="price" value="29" checked>
-                <span>Essencial - R$ 29/mês</span>
+                <span>R$ 29/mês</span>
               </label>
               <label class="radio-label">
                 <input type="radio" name="price" value="49">
-                <span>Profissional - R$ 49/mês</span>
+                <span>R$ 49/mês</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="price" value="79">
+                <span>R$ 79/mês</span>
               </label>
             </div>
           </div>

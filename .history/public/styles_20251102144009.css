@@ -976,38 +976,6 @@ body {
     min-height: 50px;
   }
 
-  /* Form intro sections mobile */
-  .form-intro {
-    max-width: 100%;
-    text-align: left;
-  }
-
-  .intro-text {
-    font-size: 0.95rem;
-  }
-
-  .attention-box {
-    padding: 1rem;
-    margin: 1rem 0;
-  }
-
-  .attention-box h3 {
-    font-size: 1rem;
-  }
-
-  .attention-box p {
-    font-size: 0.9rem;
-  }
-
-  .instruction-box {
-    padding: 0.75rem 1rem;
-    margin: 1rem 0;
-  }
-
-  .instruction-box p {
-    font-size: 0.9rem;
-  }
-
   /* Alert box mobile */
   .alert-box {
     padding: 1rem;

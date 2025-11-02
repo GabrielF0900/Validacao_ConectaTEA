@@ -239,14 +239,14 @@ function updateFormVisibility() {
   const roleInputs = document.querySelectorAll('input[name="role"]');
   const ageGroup = document.getElementById("age-group");
   const pricingGroup = document.getElementById("pricing-group");
-
+  
   let selectedRole = "";
-  roleInputs.forEach((input) => {
+  roleInputs.forEach(input => {
     if (input.checked) {
       selectedRole = input.value;
     }
   });
-
+  
   // Show/hide age field based on role
   if (ageGroup) {
     if (selectedRole === "pai") {
@@ -255,7 +255,7 @@ function updateFormVisibility() {
       ageGroup.style.display = "none";
     }
   }
-
+  
   // Show/hide pricing field based on role
   if (pricingGroup) {
     if (selectedRole === "profissional") {
@@ -271,21 +271,19 @@ function updateOtherFieldsVisibility() {
   // Tools other field
   const toolsInputs = document.querySelectorAll('input[name="tools"]');
   const toolsOtherField = document.getElementById("tools-other");
-
-  toolsInputs.forEach((input) => {
+  
+  toolsInputs.forEach(input => {
     if (input.checked && input.value === "outro") {
       if (toolsOtherField) toolsOtherField.style.display = "block";
     } else if (input.checked) {
       if (toolsOtherField) toolsOtherField.style.display = "none";
     }
   });
-
+  
   // Features other field
-  const featuresOtherCheckbox = document.querySelector(
-    'input[name="features"][value="outro"]'
-  );
+  const featuresOtherCheckbox = document.querySelector('input[name="features"][value="outro"]');
   const featuresOtherField = document.getElementById("features-other");
-
+  
   if (featuresOtherCheckbox && featuresOtherField) {
     if (featuresOtherCheckbox.checked) {
       featuresOtherField.style.display = "block";
@@ -455,31 +453,6 @@ function updateClickCountsUI() {
 document.addEventListener("DOMContentLoaded", () => {
   initCarousel();
   updateClickCountsUI(); // Load saved click counts
-
-  // Initialize form visibility
-  updateFormVisibility();
-  updateOtherFieldsVisibility();
-
-  // Add event listeners for form interactions
-  const roleInputs = document.querySelectorAll('input[name="role"]');
-  roleInputs.forEach((input) => {
-    input.addEventListener("change", updateFormVisibility);
-  });
-
-  const toolsInputs = document.querySelectorAll('input[name="tools"]');
-  toolsInputs.forEach((input) => {
-    input.addEventListener("change", updateOtherFieldsVisibility);
-  });
-
-  const featuresOtherCheckbox = document.querySelector(
-    'input[name="features"][value="outro"]'
-  );
-  if (featuresOtherCheckbox) {
-    featuresOtherCheckbox.addEventListener(
-      "change",
-      updateOtherFieldsVisibility
-    );
-  }
 
   // Optional: Start auto-play (uncomment to enable)
   // startAutoPlay()
