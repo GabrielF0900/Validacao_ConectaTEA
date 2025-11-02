@@ -578,7 +578,6 @@ body {
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   padding: 4rem 0;
   color: white;
-  min-height: 200px;
 }
 
 .form-container {
@@ -604,12 +603,12 @@ body {
 }
 
 .form-header .section-title {
-  color: #000000;
+  color: white;
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   padding: 0 1rem;
 }
 
@@ -910,8 +909,6 @@ body {
 
   .form-header .section-title {
     font-size: 1.8rem;
-    padding: 0 0.5rem;
-    margin-bottom: 1rem;
   }
 
   .form-intro {

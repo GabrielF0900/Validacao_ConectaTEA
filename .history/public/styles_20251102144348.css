@@ -578,7 +578,6 @@ body {
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   padding: 4rem 0;
   color: white;
-  min-height: 200px;
 }
 
 .form-container {
@@ -588,81 +587,6 @@ body {
   border-radius: 20px;
   padding: 3rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-/* Form wrapper and header styles */
-.form-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-  color: var(--color-foreground);
-}
-
-.form-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding: 1rem 0;
-}
-
-.form-header .section-title {
-  color: #000000;
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
-  padding: 0 1rem;
-}
-
-.form-intro {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.intro-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  color: var(--color-foreground);
-}
-
-.attention-box {
-  background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
-  border: 2px solid var(--primary-color);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-}
-
-.attention-box h3 {
-  color: var(--primary-color);
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.attention-box p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-  color: var(--color-foreground);
-}
-
-.instruction-box {
-  background: #fff3cd;
-  border: 1px solid #ffeaa7;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
-}
-
-.instruction-box p {
-  font-size: 0.95rem;
-  color: #856404;
-  margin: 0;
-  font-weight: 500;
 }
 
 /* Google Forms Integration */
@@ -905,18 +829,6 @@ body {
   /* Form mobile */
   .form-wrapper {
     max-width: 100%;
-    margin: 0 1rem;
-  }
-
-  .form-header .section-title {
-    font-size: 1.8rem;
-    padding: 0 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .form-intro {
-    padding: 1.5rem;
-    margin: 0 0.5rem 2rem;
   }
 
   .form {
@@ -1004,6 +916,7 @@ body {
   .google-forms-container iframe {
     border-radius: 10px;
   }
+}
 
   /* Alert box mobile */
   .alert-box {
@@ -1040,15 +953,6 @@ body {
   .google-forms-container {
     margin: 0 1rem;
     border-radius: 15px;
-  }
-
-  .form-wrapper {
-    margin: 0 1rem;
-  }
-
-  .form-intro {
-    padding: 2rem;
-    margin-bottom: 2rem;
   }
 }
 
