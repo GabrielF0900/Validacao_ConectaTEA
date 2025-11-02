@@ -15,8 +15,7 @@
     "start": "node server.js",
     "build": "echo 'Build completed'",
     "test": "echo 'No tests specified'",
-    "reset-counters": "node reset-cli.js",
-    "reset": "node reset-cli.js"
+    "reset-counters": "node -e \"console.log('\\n🔧 Para resetar os contadores:\\n\\n1. Abra o site no navegador\\n2. Pressione F12 para abrir DevTools\\n3. No Console, digite: resetConectaTeaCounters()\\n4. Ou use o atalho: Ctrl+Shift+R\\n\\n✅ Script carregado em: http://localhost:3000\\n')\""
   },
   "dependencies": {
     "@vercel/analytics": "latest",

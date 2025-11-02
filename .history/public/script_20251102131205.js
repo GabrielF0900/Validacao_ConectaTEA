@@ -418,6 +418,14 @@ document.addEventListener("DOMContentLoaded", () => {
   initCarousel();
   updateClickCountsUI(); // Load saved click counts
 
+  // Add keyboard shortcut for resetting counters (Ctrl+Shift+R)
+  document.addEventListener("keydown", (event) => {
+    if (event.ctrlKey && event.shiftKey && event.key === "R") {
+      event.preventDefault();
+      adminResetCounters();
+    }
+  });
+
   // Optional: Start auto-play (uncomment to enable)
   // startAutoPlay()
 
@@ -430,4 +438,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // startAutoPlay()
     }
   });
+
+  // Log available admin commands
+  console.log(`
+🔧 ConectaTEA Admin Commands:
+• resetConectaTeaCounters() - Reinicia todos os contadores
+• Ctrl+Shift+R - Atalho de teclado para resetar
+• clearClickData() - Limpa dados sem confirmação
+  `);
 });

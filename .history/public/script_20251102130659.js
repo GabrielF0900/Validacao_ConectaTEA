@@ -48,52 +48,27 @@ let currentSlide = 0;
 
 // Load click data from localStorage or use defaults
 function loadClickData() {
-  const savedFeatures = localStorage.getItem("conectatea-feature-clicks");
-  const savedPricing = localStorage.getItem("conectatea-pricing-clicks");
-
+  const savedFeatures = localStorage.getItem('conectatea-feature-clicks');
+  const savedPricing = localStorage.getItem('conectatea-pricing-clicks');
+  
   return {
-    features: savedFeatures
-      ? JSON.parse(savedFeatures)
-      : {
-          metas: 0,
-          comunicacao: 0,
-          relatorios: 0,
-          ia: 0,
-        },
-    pricing: savedPricing
-      ? JSON.parse(savedPricing)
-      : {
-          essencial: 0,
-          profissional: 0,
-        },
+    features: savedFeatures ? JSON.parse(savedFeatures) : {
+      metas: 0,
+      comunicacao: 0,
+      relatorios: 0,
+      ia: 0,
+    },
+    pricing: savedPricing ? JSON.parse(savedPricing) : {
+      essencial: 0,
+      profissional: 0,
+    }
   };
 }
 
 // Save click data to localStorage
 function saveClickData() {
-  localStorage.setItem(
-    "conectatea-feature-clicks",
-    JSON.stringify(clickedFeatures)
-  );
-  localStorage.setItem(
-    "conectatea-pricing-clicks",
-    JSON.stringify(clickedPricing)
-  );
-}
-
-// Clear click data from localStorage (utility function)
-function clearClickData() {
-  localStorage.removeItem("conectatea-feature-clicks");
-  localStorage.removeItem("conectatea-pricing-clicks");
-
-  // Reset counters
-  Object.keys(clickedFeatures).forEach((key) => (clickedFeatures[key] = 0));
-  Object.keys(clickedPricing).forEach((key) => (clickedPricing[key] = 0));
-
-  // Update UI
-  updateClickCountsUI();
-
-  console.log("[v0] Click data cleared from localStorage");
+  localStorage.setItem('conectatea-feature-clicks', JSON.stringify(clickedFeatures));
+  localStorage.setItem('conectatea-pricing-clicks', JSON.stringify(clickedPricing));
 }
 
 // Initialize click data
@@ -180,10 +155,10 @@ function handleFeatureClick(feature) {
   clickedFeatures[feature]++;
   document.getElementById(`click-${feature}`).textContent =
     clickedFeatures[feature];
-
+  
   // Save to localStorage
   saveClickData();
-
+  
   console.log(
     `[v0] Feature clicked: ${feature}, total clicks: ${clickedFeatures[feature]}`
   );
@@ -193,10 +168,10 @@ function handleFeatureClick(feature) {
 function handlePricingClick(plan) {
   clickedPricing[plan]++;
   document.getElementById(`click-${plan}`).textContent = clickedPricing[plan];
-
+  
   // Save to localStorage
   saveClickData();
-
+  
   console.log(
     `[v0] Pricing plan clicked: ${plan}, total clicks: ${clickedPricing[plan]}`
   );
@@ -394,29 +369,9 @@ function goToSlideEnhanced(index) {
   goToSlide(index);
 }
 
-// Update UI with saved click counts
-function updateClickCountsUI() {
-  // Update feature clicks
-  Object.keys(clickedFeatures).forEach((feature) => {
-    const element = document.getElementById(`click-${feature}`);
-    if (element) {
-      element.textContent = clickedFeatures[feature];
-    }
-  });
-
-  // Update pricing clicks
-  Object.keys(clickedPricing).forEach((plan) => {
-    const element = document.getElementById(`click-${plan}`);
-    if (element) {
-      element.textContent = clickedPricing[plan];
-    }
-  });
-}
-
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", () => {
   initCarousel();
-  updateClickCountsUI(); // Load saved click counts
 
   // Optional: Start auto-play (uncomment to enable)
   // startAutoPlay()
