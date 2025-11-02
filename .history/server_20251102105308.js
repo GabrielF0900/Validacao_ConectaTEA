@@ -21,10 +21,10 @@ app.use(express.static(path.join(__dirname, "public")));
 // Handle all other routes by serving index.html (SPA fallback)
 app.use((req, res, next) => {
   // Se não é um arquivo estático, serve o index.html
-  if (!req.path.includes(".") && req.method === "GET") {
+  if (!req.path.includes('.') && req.method === 'GET') {
     res.sendFile(path.join(__dirname, "public", "index.html"));
   } else {
-    res.status(404).send("Not Found");
+    res.status(404).send('Not Found');
   }
 });
 
