@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.static(path.join(__dirname, "public")));
 
 // Handle all other routes by serving index.html (SPA fallback)
-app.use("*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
