@@ -92,6 +92,33 @@ app.get("/api/clicks", async (req, res) => {
   }
 });
 
+// POST /api/form - Salvar submissão do formulário
+app.post("/api/form", async (req, res) => {
+  try {
+    const formData = req.body;
+
+    const submission = await prisma.formSubmission.create({
+      data: {
+        name: formData.name,
+        email: formData.email,
+        role: formData.role,
+        age: formData.age,
+        tools: formData.tools,
+        toolsOther: formData.toolsOther,
+        features: JSON.stringify(formData.features || []),
+        featuresOther: formData.featuresOther,
+        price: formData.price,
+        beta: formData.beta,
+      },
+    });
+
+    res.json({ success: true, submission });
+  } catch (error) {
+    console.error("Error saving form submission:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // Handle all other routes by serving index.html (SPA fallback)
 app.use((req, res, next) => {
   // Se não é um arquivo estático, serve o index.html

@@ -16,11 +16,7 @@
     "build": "echo 'Build completed'",
     "test": "echo 'No tests specified'",
     "reset-counters": "node reset-cli.js",
-    "reset": "node reset-cli.js",
-    "db:migrate": "prisma migrate dev",
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push",
-    "db:studio": "prisma studio"
+    "reset": "node reset-cli.js"
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",

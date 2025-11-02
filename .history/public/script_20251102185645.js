@@ -183,7 +183,7 @@ function handleFeatureClick(feature) {
   saveClickData();
 
   // Send to backend (non-blocking)
-  sendClickToBackend(feature, "feature");
+  sendClickToBackend(feature, 'feature');
 }
 
 // Handle pricing click
@@ -195,25 +195,25 @@ function handlePricingClick(plan) {
   saveClickData();
 
   // Send to backend (non-blocking)
-  sendClickToBackend(plan, "pricing");
+  sendClickToBackend(plan, 'pricing');
 }
 
 // Send click data to backend
 async function sendClickToBackend(key, type) {
   try {
-    const response = await fetch("/api/click", {
-      method: "POST",
+    const response = await fetch('/api/click', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ key, type }),
+      body: JSON.stringify({ key, type })
     });
 
     if (!response.ok) {
-      console.warn("Failed to send click to backend:", response.statusText);
+      console.warn('Failed to send click to backend:', response.statusText);
     }
   } catch (error) {
-    console.warn("Error sending click to backend:", error);
+    console.warn('Error sending click to backend:', error);
     // Não bloqueia a UI - continua funcionando com localStorage
   }
 }

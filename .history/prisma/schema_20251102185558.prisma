@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = "file:./dev.db"
+}
+
+model Click {
+    id        Int      @id @default(autoincrement())
+    key       String // Ex: "metas", "comunicacao", "essencial", "profissional"
+    type      String // "feature" ou "pricing"
+    count     Int      @default(1)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([type, key])
+    @@map("clicks")
+}
+
+model FormSubmission {
+    id            Int      @id @default(autoincrement())
+    name          String
+    email         String
+    role          String // "pai" ou "profissional"
+    age           String? // Apenas para pais
+    tools         String? // Apenas para profissionais
+    toolsOther    String? // Campo "outros" para ferramentas
+    features      String? // JSON array das features selecionadas
+    featuresOther String? // Campo "outros" para features
+    price         String? // Faixa de preço selecionada
+    beta          String // "sim" ou "nao"
+    createdAt     DateTime @default(now())
+
+    @@map("form_submissions")
+}

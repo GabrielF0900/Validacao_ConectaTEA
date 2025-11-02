@@ -24,18 +24,16 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // API Routes
 // POST /api/click - Registrar um clique
-app.post("/api/click", async (req, res) => {
+app.post('/api/click', async (req, res) => {
   try {
     const { key, type } = req.body;
-
+    
     if (!key || !type) {
-      return res.status(400).json({ error: "Key and type are required" });
+      return res.status(400).json({ error: 'Key and type are required' });
     }
 
-    if (!["feature", "pricing"].includes(type)) {
-      return res
-        .status(400)
-        .json({ error: 'Type must be "feature" or "pricing"' });
+    if (!['feature', 'pricing'].includes(type)) {
+      return res.status(400).json({ error: 'Type must be "feature" or "pricing"' });
     }
 
     // Upsert: incrementa se existe, cria se não existe
@@ -43,33 +41,36 @@ app.post("/api/click", async (req, res) => {
       where: {
         type_key: {
           type: type,
-          key: key,
-        },
+          key: key
+        }
       },
       update: {
         count: {
-          increment: 1,
-        },
+          increment: 1
+        }
       },
       create: {
         key: key,
         type: type,
-        count: 1,
-      },
+        count: 1
+      }
     });
 
     res.json({ success: true, click });
   } catch (error) {
-    console.error("Error recording click:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error('Error recording click:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
 // GET /api/clicks - Listar todos os cliques
-app.get("/api/clicks", async (req, res) => {
+app.get('/api/clicks', async (req, res) => {
   try {
     const clicks = await prisma.click.findMany({
-      orderBy: [{ type: "asc" }, { key: "asc" }],
+      orderBy: [
+        { type: 'asc' },
+        { key: 'asc' }
+      ]
     });
 
     // Organizar os dados no mesmo formato do localStorage
@@ -84,11 +85,38 @@ app.get("/api/clicks", async (req, res) => {
     res.json({
       success: true,
       clicks: organized,
-      raw: clicks,
+      raw: clicks
     });
   } catch (error) {
-    console.error("Error fetching clicks:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error('Error fetching clicks:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// POST /api/form - Salvar submissão do formulário
+app.post('/api/form', async (req, res) => {
+  try {
+    const formData = req.body;
+    
+    const submission = await prisma.formSubmission.create({
+      data: {
+        name: formData.name,
+        email: formData.email,
+        role: formData.role,
+        age: formData.age,
+        tools: formData.tools,
+        toolsOther: formData.toolsOther,
+        features: JSON.stringify(formData.features || []),
+        featuresOther: formData.featuresOther,
+        price: formData.price,
+        beta: formData.beta
+      }
+    });
+
+    res.json({ success: true, submission });
+  } catch (error) {
+    console.error('Error saving form submission:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
