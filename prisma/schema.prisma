@@ -1,23 +1,75 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Click {
-    id        Int      @id @default(autoincrement())
-    key       String // Ex: "metas", "comunicacao", "essencial", "profissional"
-    type      String // "feature" ou "pricing"
-    count     Int      @default(1)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  key       String
+  type      String
+  count     Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-    @@unique([type, key])
-    @@map("clicks")
+  @@unique([type, key])
+  @@map("clicks")
 }
+
+
+
+enum Category {
+  ESTUDO
+  PESSOAL
+  ESTAGIO
+  PESQUISA
+}
+
+enum Emotion {
+  ALEGRIA
+  CALMA
+  ANSIEDADE
+  REFLEXAO
+  MOTIVACAO
+  TRISTEZA
+}
+
+model User {
+  id                String                @id @default(cuid())
+  username          String
+  email             String                @unique
+  password          String
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+  refreshToken      String?
+
+  passwordResetTokens PasswordResetToken[]
+  reflections         Reflection[]          // Relacionamento 1:N com Reflexões
+}
+
+model PasswordResetToken {
+  id         String   @id @default(cuid())
+  token      String   @unique
+  createdAt  DateTime @default(now())
+  expiresAt  DateTime
+
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Reflection {
+  id          String     @id @default(cuid())
+  title       String
+  category    Category
+  emotion     Emotion
+  content     String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
